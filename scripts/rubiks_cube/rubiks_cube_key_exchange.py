@@ -76,9 +76,11 @@ def Get_New_Private_Key(num_bytes = 57):
     
     return private_key
 
-def Get_New_Public_Key(private_key):
+def Get_New_Public_Key(private_key, num_bytes = 57):
     public_key = ""
     
+    public_key = Get_Exclusive_Or_Of_Hex(private_key, '5') 
+    print(public_key)
     return public_key
 
 def Get_Hex_Mapped_To_Cube(hex):
@@ -233,9 +235,11 @@ def Get_Unscrambled_Cipher_Cube(scrambled_cipher_cube):
     
     return unscrambled_cipher_cube
 
-def Get_Decrypted_Cipher(private_key, cipher):
+def Get_Decrypted_Cipher(message_cipher, private_key):
     decrypted_cipher = None
+    decrypted_cipher = Get_Exclusive_Or_Of_Hex(message_cipher, private_key)
     
+    print("Decryted:", decrypted_cipher)
     return decrypted_cipher
 
 def Trace_Key_Exchange():
